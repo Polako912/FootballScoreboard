@@ -15,6 +15,11 @@ public class CreateMatchService : ICreateMatchService
 
     public void CreateMatch(FootballMatch footballMatch)
     {
+        if (_footballMatchRepository.Exists(footballMatch))
+        {
+            throw new InvalidOperationException("Match already exists");
+        }
         
+        _footballMatchRepository.Create(footballMatch);
     }
 }

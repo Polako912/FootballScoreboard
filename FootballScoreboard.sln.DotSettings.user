@@ -4,5 +4,6 @@
     &lt;TestId&gt;xUnit::84D792EC-487E-4721-83FF-B410C44F56B8::net7.0::FootballScoreboard.Tests.CreateMatchServiceTests.CreateMatch_MatchDoesNotExist_MatchIsCreated&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::84D792EC-487E-4721-83FF-B410C44F56B8::net7.0::FootballScoreboard.Tests.CreateMatchServiceTests.CreateMatch_MatchExists_ExceptionThrown&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::84D792EC-487E-4721-83FF-B410C44F56B8::net7.0::FootballScoreboard.Tests.GetMatchesServiceTests.GetMatches_EmptyList_ReturnsEmptyList&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::84D792EC-487E-4721-83FF-B410C44F56B8::net7.0::FootballScoreboard.Tests.GetMatchesServiceTests.GetMatches_NotEmptyList_ReturnsListSortedByScore&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
