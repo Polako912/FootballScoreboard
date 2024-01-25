@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballScoreboard", "FootballScoreboard\FootballScoreboard.csproj", "{932CF1FC-E15B-4686-A4A8-115D196AC055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballScoreboard.Tests", "FootballScoreboard.Tests\FootballScoreboard.Tests.csproj", "{84D792EC-487E-4721-83FF-B410C44F56B8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{932CF1FC-E15B-4686-A4A8-115D196AC055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932CF1FC-E15B-4686-A4A8-115D196AC055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932CF1FC-E15B-4686-A4A8-115D196AC055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932CF1FC-E15B-4686-A4A8-115D196AC055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84D792EC-487E-4721-83FF-B410C44F56B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84D792EC-487E-4721-83FF-B410C44F56B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84D792EC-487E-4721-83FF-B410C44F56B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84D792EC-487E-4721-83FF-B410C44F56B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
