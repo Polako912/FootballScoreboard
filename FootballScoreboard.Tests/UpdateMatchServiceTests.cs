@@ -6,9 +6,9 @@ public class UpdateMatchServiceTests
     public void UpdateMatch_MatchDoesNotExist_ExceptionThrown()
     {
         // Arrange 
-        
+
         // Act
-        
+
         // Assert
     }
 
@@ -16,9 +16,9 @@ public class UpdateMatchServiceTests
     public void UpdateMatch_MatchExists_MatchUpdated()
     {
         // Arrange
-        
+
         // Act 
-        
+
         // Assert
     }
 }
