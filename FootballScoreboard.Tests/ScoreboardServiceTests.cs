@@ -100,7 +100,7 @@ public class ScoreboardServiceTests
         var action = () => _scoreboardService.UpdateMatch("", "", 2, 5);
 
         // Assert
-        Assert.Throws<InvalidOperationException>(action);
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]
@@ -114,7 +114,7 @@ public class ScoreboardServiceTests
         var action = () => _scoreboardService.UpdateMatch(null, null, 2, 5);
 
         // Assert
-        Assert.Throws<InvalidOperationException>(action);
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]
@@ -159,7 +159,7 @@ public class ScoreboardServiceTests
         var action = () => _scoreboardService.EndMatch("", "");
 
         // Assert
-        Assert.Throws<InvalidOperationException>(action);
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]
@@ -173,7 +173,7 @@ public class ScoreboardServiceTests
         var action = () => _scoreboardService.EndMatch(null, null);
 
         // Assert
-        Assert.Throws<InvalidOperationException>(action);
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]
