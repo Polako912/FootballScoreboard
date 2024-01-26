@@ -1,10 +1,11 @@
+using FluentAssertions;
 using FootballScoreboard.Services;
 
 namespace FootballScoreboard.Tests;
 
 public class ScoreboardServiceTests
 {
-    private ScoreboardService _scoreboardService;
+    private IScoreboardService _scoreboardService;
 
     [Fact]
     public void StartNewMatch_MatchDoesNotExist_MatchCreated()
@@ -26,6 +27,7 @@ public class ScoreboardServiceTests
     {
         // Arrange
         _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
 
         // Act
         var action = () => _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
@@ -39,7 +41,6 @@ public class ScoreboardServiceTests
     {
         // Arrange
         _scoreboardService = new ScoreboardService();
-        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
 
         // Act
         var action = () => _scoreboardService.UpdateMatch("Liverpool", "Manchester United", 2, 0);
@@ -56,7 +57,7 @@ public class ScoreboardServiceTests
         _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
 
         // Act
-        var action = () => _scoreboardService.UpdateMatch("Liverpool", "Manchester United", 2, 0);
+        _scoreboardService.UpdateMatch("Liverpool", "Manchester United", 2, 0);
 
         // Assert
         var match = _scoreboardService.GetMatchesSummary().First();
@@ -71,7 +72,6 @@ public class ScoreboardServiceTests
     {
         // Arrange
         _scoreboardService = new ScoreboardService();
-        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
 
         // Act
         var action = () => _scoreboardService.EndMatch("Liverpool", "Manchester United");
@@ -93,7 +93,7 @@ public class ScoreboardServiceTests
 
         // Assert
         var match = _scoreboardService.GetMatchesSummary().First();
-        match.HomeTeam.Should().Be("Liverpool");
+        match.HomeTeam.Should().Be("FC Barcelona");
         match.AwayTeam.Should().Be("Real Madrid");
     }
 
