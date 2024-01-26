@@ -13,18 +13,6 @@ public class FootballMatch
         StartTime = DateTime.Now.ToUniversalTime();
     }
 
-    private FootballMatch(
-        string homeTeam,
-        string awayTeam,
-        DateTime startTime)
-    {
-        HomeTeam = homeTeam;
-        AwayTeam = awayTeam;
-        HomeTeamScore = 0;
-        AwayTeamScore = 0;
-        StartTime = startTime;
-    }
-
     public string HomeTeam { get; private set; }
     public string AwayTeam { get; private set; }
     public int HomeTeamScore { get; private set; }
@@ -37,14 +25,6 @@ public class FootballMatch
         string awayTeam)
     {
         return new FootballMatch(homeTeam, awayTeam);
-    }
-
-    public static FootballMatch CreateWithDate(
-        string homeTeam,
-        string awayTeam,
-        DateTime startTime)
-    {
-        return new FootballMatch(homeTeam, awayTeam, startTime);
     }
 
     public void EndMatch()

@@ -131,4 +131,26 @@ public class ScoreboardServiceTests
         matches.Last().HomeTeam.Should().Be("Liverpool");
         matches.Last().AwayTeam.Should().Be("Manchester United");
     }
+
+    [Fact]
+    public void GetMatchesSummary_MatchExists_ReturnsMatchesListOrderedByStartTime()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+        _scoreboardService.StartNewMatch("FC Barcelona", "Real Madrid");
+        _scoreboardService.UpdateMatch("FC Barcelona", "Real Madrid", 3, 1);
+        _scoreboardService.UpdateMatch("Liverpool", "Manchester United", 3, 1);
+
+        // Act
+        var matches = _scoreboardService.GetMatchesSummary();
+
+        // Assert
+        matches.Should().NotBeEmpty();
+        matches.Count.Should().Be(2);
+        matches.First().HomeTeam.Should().Be("Liverpool");
+        matches.First().AwayTeam.Should().Be("Manchester United");
+        matches.Last().HomeTeam.Should().Be("FC Barcelona");
+        matches.Last().AwayTeam.Should().Be("Real Madrid");
+    }
 }
