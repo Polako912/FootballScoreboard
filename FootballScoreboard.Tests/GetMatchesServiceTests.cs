@@ -9,16 +9,13 @@ namespace FootballScoreboard.Tests;
 
 public class GetMatchesServiceTests
 {
-    private IFootballMatchRepository _footballMatchRepository;
     private IGetMatchesService _getMatchesService;
 
     [Fact]
     public void GetMatches_EmptyList_ReturnsEmptyList()
     {
         // Arrange
-        _footballMatchRepository = Substitute.For<IFootballMatchRepository>();
-        _footballMatchRepository.Get().Returns(new List<FootballMatch>());
-        _getMatchesService = new GetMatchesService(_footballMatchRepository);
+        _getMatchesService = new GetMatchesService();
 
         // Act
         var result = _getMatchesService.GetMatches();
@@ -31,9 +28,7 @@ public class GetMatchesServiceTests
     public void GetMatches_NotEmptyList_ReturnsListSortedByScore()
     {
         // Arrange
-        _footballMatchRepository = Substitute.For<IFootballMatchRepository>();
-        _footballMatchRepository.Get().Returns(GetDataWithScores());
-        _getMatchesService = new GetMatchesService(_footballMatchRepository);
+        _getMatchesService = new GetMatchesService();
 
         // Act
         var result = _getMatchesService.GetMatches();
@@ -48,9 +43,7 @@ public class GetMatchesServiceTests
     public void GetMatches_NotEmptyList_ReturnsListSortedByStartDate()
     {
         // Arrange
-        _footballMatchRepository = Substitute.For<IFootballMatchRepository>();
-        _footballMatchRepository.Get().Returns(GetDataWithScoresAndDates());
-        _getMatchesService = new GetMatchesService(_footballMatchRepository);
+        _getMatchesService = new GetMatchesService();
 
         // Act
         var result = _getMatchesService.GetMatches();

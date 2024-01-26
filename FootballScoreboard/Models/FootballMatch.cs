@@ -3,34 +3,48 @@ namespace FootballScoreboard.Models;
 public class FootballMatch
 {
     private FootballMatch(
-        FootballTeam homeTeam, 
-        FootballTeam awayTeam, 
-        int homeTeamScore, 
-        int awayTeamScore,
-        DateTime dateTime)
+        string homeTeam,
+        string awayTeam)
     {
         HomeTeam = homeTeam;
         AwayTeam = awayTeam;
-        HomeTeamScore = homeTeamScore;
-        AwayTeamScore = awayTeamScore;
-        StartTime = dateTime;
+        HomeTeamScore = 0;
+        AwayTeamScore = 0;
+        StartTime = DateTime.Now.ToUniversalTime();
     }
 
-    public FootballTeam HomeTeam { get; private set; }
-    public FootballTeam AwayTeam { get; private set; }
+    private FootballMatch(
+        string homeTeam,
+        string awayTeam,
+        DateTime startTime)
+    {
+        HomeTeam = homeTeam;
+        AwayTeam = awayTeam;
+        HomeTeamScore = 0;
+        AwayTeamScore = 0;
+        StartTime = startTime;
+    }
+
+    public string HomeTeam { get; private set; }
+    public string AwayTeam { get; private set; }
     public int HomeTeamScore { get; private set; }
     public int AwayTeamScore { get; private set; }
     public DateTime StartTime { get; private set; }
     public DateTime? EndTime { get; private set; }
 
     public static FootballMatch Create(
-        FootballTeam homeTeam, 
-        FootballTeam awayTeam, 
-        int homeTeamScore,
-        int awayTeamScore, 
-        DateTime dateTime)
+        string homeTeam,
+        string awayTeam)
     {
-        return new FootballMatch(homeTeam, awayTeam, homeTeamScore, awayTeamScore, dateTime);
+        return new FootballMatch(homeTeam, awayTeam);
+    }
+
+    public static FootballMatch CreateWithDate(
+        string homeTeam,
+        string awayTeam,
+        DateTime startTime)
+    {
+        return new FootballMatch(homeTeam, awayTeam, startTime);
     }
 
     public void EndMatch()
