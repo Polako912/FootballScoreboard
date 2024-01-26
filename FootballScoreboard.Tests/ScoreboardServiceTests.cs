@@ -37,6 +37,32 @@ public class ScoreboardServiceTests
     }
 
     [Fact]
+    public void StartNewMatch_MatchTeamsNamesAreEmpty_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+
+        // Act
+        var action = () => _scoreboardService.StartNewMatch("", "");
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
+    public void StartNewMatch_MatchTeamsNamesAreNull_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+
+        // Act
+        var action = () => _scoreboardService.StartNewMatch(null, null);
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
     public void UpdateMatch_MatchDoesNotExist_ExceptionThrown()
     {
         // Arrange

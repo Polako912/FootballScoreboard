@@ -16,6 +16,9 @@ public class ScoreboardService : IScoreboardService
 
     public void UpdateMatch(string homeTeam, string awayTeam, int homeScore, int awayScore)
     {
+        if (homeScore < 0 || awayScore < 0)
+            throw new InvalidOperationException("Scores must be greater than 0");
+
         if (!Matches.Exists(x => x.HomeTeam == homeTeam && x.AwayTeam == awayTeam))
             throw new InvalidOperationException("Match does not exist");
 
