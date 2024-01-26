@@ -90,6 +90,34 @@ public class ScoreboardServiceTests
     }
 
     [Fact]
+    public void UpdateMatch_MatchTeamsNamesAreEmpty_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.UpdateMatch("", "", 2, 5);
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
+    public void UpdateMatch_MatchTeamsNamesAreNull_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.UpdateMatch(null, null, 2, 5);
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
     public void UpdateMatch_MatchExists_MatchUpdated()
     {
         // Arrange
@@ -115,6 +143,34 @@ public class ScoreboardServiceTests
 
         // Act
         var action = () => _scoreboardService.EndMatch("Liverpool", "Manchester United");
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
+    public void EndMatch_MatchTeamNamesAreEmpty_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.EndMatch("", "");
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
+    public void EndMatch_MatchTeamNamesAreNull_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.EndMatch(null, null);
 
         // Assert
         Assert.Throws<InvalidOperationException>(action);
