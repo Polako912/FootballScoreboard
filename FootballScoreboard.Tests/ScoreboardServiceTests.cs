@@ -50,6 +50,20 @@ public class ScoreboardServiceTests
     }
 
     [Fact]
+    public void UpdateMatch_ScoreIsNegativeNumber_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.UpdateMatch("Liverpool", "Manchester United", -2, -5);
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
     public void UpdateMatch_MatchExists_MatchUpdated()
     {
         // Arrange
