@@ -37,6 +37,32 @@ public class ScoreboardServiceTests
     }
 
     [Fact]
+    public void StartNewMatch_MatchTeamsNamesAreEmpty_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+
+        // Act
+        var action = () => _scoreboardService.StartNewMatch("", "");
+
+        // Assert
+        Assert.Throws<ArgumentException>(action);
+    }
+
+    [Fact]
+    public void StartNewMatch_MatchTeamsNamesAreNull_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+
+        // Act
+        var action = () => _scoreboardService.StartNewMatch(null, null);
+
+        // Assert
+        Assert.Throws<ArgumentException>(action);
+    }
+
+    [Fact]
     public void UpdateMatch_MatchDoesNotExist_ExceptionThrown()
     {
         // Arrange
@@ -47,6 +73,48 @@ public class ScoreboardServiceTests
 
         // Assert
         Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
+    public void UpdateMatch_ScoreIsNegativeNumber_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.UpdateMatch("Liverpool", "Manchester United", -2, -5);
+
+        // Assert
+        Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
+    public void UpdateMatch_MatchTeamsNamesAreEmpty_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.UpdateMatch("", "", 2, 5);
+
+        // Assert
+        Assert.Throws<ArgumentException>(action);
+    }
+
+    [Fact]
+    public void UpdateMatch_MatchTeamsNamesAreNull_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.UpdateMatch(null, null, 2, 5);
+
+        // Assert
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]
@@ -78,6 +146,34 @@ public class ScoreboardServiceTests
 
         // Assert
         Assert.Throws<InvalidOperationException>(action);
+    }
+
+    [Fact]
+    public void EndMatch_MatchTeamNamesAreEmpty_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.EndMatch("", "");
+
+        // Assert
+        Assert.Throws<ArgumentException>(action);
+    }
+
+    [Fact]
+    public void EndMatch_MatchTeamNamesAreNull_ExceptionThrown()
+    {
+        // Arrange
+        _scoreboardService = new ScoreboardService();
+        _scoreboardService.StartNewMatch("Liverpool", "Manchester United");
+
+        // Act
+        var action = () => _scoreboardService.EndMatch(null, null);
+
+        // Assert
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]
