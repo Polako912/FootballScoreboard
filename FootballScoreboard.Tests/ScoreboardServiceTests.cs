@@ -46,7 +46,7 @@ public class ScoreboardServiceTests
         var action = () => _scoreboardService.StartNewMatch("", "");
 
         // Assert
-        Assert.Throws<InvalidOperationException>(action);
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]
@@ -59,7 +59,7 @@ public class ScoreboardServiceTests
         var action = () => _scoreboardService.StartNewMatch(null, null);
 
         // Assert
-        Assert.Throws<InvalidOperationException>(action);
+        Assert.Throws<ArgumentException>(action);
     }
 
     [Fact]

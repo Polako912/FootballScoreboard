@@ -8,6 +8,9 @@ public class ScoreboardService : IScoreboardService
 
     public void StartNewMatch(string homeTeam, string awayTeam)
     {
+        if (string.IsNullOrEmpty(homeTeam) || string.IsNullOrEmpty(awayTeam))
+            throw new ArgumentException("Team name cannot be null or empty");
+
         if (Matches.Exists(x => x.HomeTeam == homeTeam && x.AwayTeam == awayTeam))
             throw new InvalidOperationException("Match already exist");
 
